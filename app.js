@@ -71,10 +71,12 @@ function displayGame(game) {
   // Byg HTML struktur dynamisk - template literal med ${} til at indsætte data
   const gameHTML = `
   <article class="game-card" tabindex ="0">
-    <img
+  <img
   src="${getLocalImage(game)}"
   alt="Forside af brætspillet ${game.title}"
   class="game-poster"
+  width="400"
+  height="400"
 />
       <div class= "game-info">
       <h3>${game.title}</h3>
@@ -159,10 +161,12 @@ function populateGenreDropdown() {
 function showGameModal(game) {
   // Find modal indhold container og byg HTML struktur dynamisk
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
-  <img
+ <img
   src="${getLocalImage(game)}"
   alt="Forside af brætspillet ${game.title}"
   class="game-poster"
+  width="400"
+  height="400"
 />
     <div class="dialog-details">
      <h2>${game.title}</h2>
