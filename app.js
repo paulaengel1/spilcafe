@@ -52,9 +52,11 @@ function displayGame(game) {
   // Byg HTML struktur dynamisk - template literal med ${} til at indsætte data
   const gameHTML = `
   <article class="game-card" tabindex ="0">
-    <img src = "${game.image}"
-      alt = "Poster of "${game.title}"
-      class= "game-poster"/>
+    <img
+  src="${game.image}"
+  alt="Forside af brætspillet ${game.title}"
+  class="game-poster"
+/>
       <div class= "game-info">
       <h3>${game.title}</h3>
       
