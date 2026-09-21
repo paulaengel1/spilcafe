@@ -77,6 +77,7 @@ function displayGame(game) {
   class="game-poster"
   width="400"
   height="400"
+  loading="lazy"
 />
       <div class= "game-info">
       <h3>${game.title}</h3>
@@ -167,6 +168,7 @@ function showGameModal(game) {
   class="game-poster"
   width="400"
   height="400"
+  loading="lazy"
 />
     <div class="dialog-details">
      <h2>${game.title}</h2>
