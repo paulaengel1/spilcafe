@@ -70,25 +70,31 @@ function displayGame(game) {
 
   // Byg HTML struktur dynamisk - template literal med ${} til at indsætte data
   const gameHTML = `
-  <article class="game-card" tabindex ="0">
-  <img
-  src="${getLocalImage(game)}"
-  alt="Forside af brætspillet ${game.title}"
-  class="game-poster"
-  width="400"
-  height="400"
-  loading="lazy"
-/>
-      <div class= "game-info">
-      <h3>${game.title}</h3>
-      
+  <article class="game-card">
+    <img
+      src="${getLocalImage(game)}"
+      alt="Forside af brætspillet ${game.title}"
+      class="game-poster"
+      width="400"
+      height="400"
+      loading="lazy"
+    />
 
-      
-      <p class= "game-rating">⭐ ${game.rating}</p>
-      <p class= "game-playtime">Ca. ${game.playtime} min.</p>
-      <p class= "game-players">${game.players.min} - ${game.players.max} spillere</p>
-      <p class= "game-genre">${game.genre}</p>
-      </div>
+    <div class="game-info">
+      <h3>${game.title}</h3>
+      <p class="game-rating">⭐ ${game.rating}</p>
+      <p class="game-playtime">Ca. ${game.playtime} min.</p>
+      <p class="game-players">${game.players.min} - ${game.players.max} spillere</p>
+      <p class="game-genre">${game.genre}</p>
+
+      <button
+        type="button"
+        class="game-details-btn"
+        aria-haspopup="dialog"
+      >
+        Se mere om ${game.title}
+      </button>
+    </div>
   </article>`;
 
   // Tilføj game card til DOM (HTML) - insertAdjacentHTML sætter HTML ind uden at overskrive
@@ -96,18 +102,17 @@ function displayGame(game) {
 
   // Find det kort vi lige har tilføjet (det sidste element)
   const newCard = gameList.lastElementChild;
-
-  // Tilføj click event til kortet - når brugeren klikker på kortet
-  newCard.addEventListener("click", function () {
-    showGameModal(game); //
+  const detailsButton = newCard.querySelector(".game-details-btn");
+  
+  // Åbn dialogen via den semantiske knap
+  detailsButton.addEventListener("click", function (event) {
+    event.stopPropagation();
+    showGameModal(game);
   });
-
-  // Tilføj keyboard support (Enter og mellemrum) for tilgængelighed
-  newCard.addEventListener("keydown", function (event) {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault(); // Forhindre scroll ved mellemrum
-      showGameModal(game); //
-    }
+  
+  // Bevar muligheden for at klikke på hele kortet med mus
+  newCard.addEventListener("click", function () {
+    showGameModal(game);
   });
 }
 
@@ -168,7 +173,6 @@ function showGameModal(game) {
   class="game-poster"
   width="400"
   height="400"
-  loading="lazy"
 />
     <div class="dialog-details">
      <h2>${game.title}</h2>
