@@ -62,10 +62,13 @@
       </section>
     </main>
 
-    <dialog id="game-dialog">
+    <dialog id="game-dialog" aria-labelledby="dialog-title">
       <div id="dialog-content"></div>
+    
       <button
         id="close-dialog"
+        type="button"
+        autofocus
         onclick="document.getElementById('game-dialog').close()"
       >
         Luk
