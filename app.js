@@ -7,6 +7,25 @@ document.addEventListener("DOMContentLoaded", initApp);
 // Global variabel til alle film - tilgængelig for alle funktioner
 let allGames = [];
 
+const specialImageNames = {
+  "7 Wonders": "7wonders",
+  "Stratego": "strategy",
+  "Ticket to Ride: Europe": "ticket-to-ride"
+};
+
+function getLocalImage(game) {
+  const imageName =
+    specialImageNames[game.title] ||
+    game.title
+      .toLowerCase()
+      .replaceAll(" ", "-")
+      .replaceAll("æ", "ae")
+      .replaceAll("ø", "oe")
+      .replaceAll("å", "aa");
+
+  return `img/${imageName}.webp`;
+}
+
 // #1: Initialize the app - sæt event listeners og hent data
 function initApp() {
   getGames(); // Hent film data fra JSON fil
@@ -53,7 +72,7 @@ function displayGame(game) {
   const gameHTML = `
   <article class="game-card" tabindex ="0">
     <img
-  src="${game.image}"
+  src="${getLocalImage(game)}"
   alt="Forside af brætspillet ${game.title}"
   class="game-poster"
 />
@@ -140,8 +159,8 @@ function populateGenreDropdown() {
 function showGameModal(game) {
   // Find modal indhold container og byg HTML struktur dynamisk
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
-   <img
-  src="${game.image}"
+  <img
+  src="${getLocalImage(game)}"
   alt="Forside af brætspillet ${game.title}"
   class="game-poster"
 />
