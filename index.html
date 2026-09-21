@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Ida Marie, Bex, Marie Luise & Sofie" />
+    <meta name="description" content="Project Template" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="icon" href="img/favicon.ico" />
+
+    <title>Spiloversigt</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Spiloversigt</h1>
+    </header>
+
+    <main>
+      <!-- Search Bar -->
+      <div class="searchbar-container">
+        <input id="search-input" type="search" placeholder="Søg spil..." />
+      </div>
+      <!-- Filter Bar -->
+      <section class="filterbar">
+        <select id="players-select"></select>
+        <select id="genre-select2"></select>
+        <select id="genre-select1"></select>
+        <select id="#genre-select4">
+          <option value="all">Flere filtre</option>
+          <option value="all">Alder</option>
+          <option value="all">Sprog</option>
+          <option value="all">Nye/ældre</option>
+          <option value="all">Rating</option>
+          <option value="all">Sværhedsgrad</option>
+        </select>
+        <button id="clear-filters" class="clear-btn">
+          <span class="btn-icon"></span>
+          <span class="btn-text">Ryd filtre</span>
+        </button>
+      </section>
+      <!-- Game List -->
+      <section id="game-list">
+        <!-- Game cards will be rendered here by JavaScript -->
+      </section>
+    </main>
+
+    <dialog id="game-dialog">
+      <div id="dialog-content"></div>
+      <button
+        id="close-dialog"
+        onclick="document.getElementById('game-dialog').close()"
+      >
+        Luk
+      </button>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
