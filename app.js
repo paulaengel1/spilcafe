@@ -140,7 +140,11 @@ function populateGenreDropdown() {
 function showGameModal(game) {
   // Find modal indhold container og byg HTML struktur dynamisk
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
-    <img src="${game.image}" alt="Poster af ${game.title}" class="game-poster">
+   <img
+  src="${game.image}"
+  alt="Forside af brætspillet ${game.title}"
+  class="game-poster"
+/>
     <div class="dialog-details">
      <h2>${game.title}</h2>
 
