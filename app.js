@@ -59,11 +59,6 @@ async function getGames() {
   displayGames(allGames); // Vis alle film ved start
 }
 
-// Loop gennem alle film og vis hver enkelt
-for (const game of allGames) {
-  displayGame(game); // Kald displayMovie for hver film
-}
-
 // #4: Render a single game card and add event listeners - lav et spil kort
 function displayGame(game) {
   const gameList = document.querySelector("#game-list"); // Find container til film
