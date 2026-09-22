@@ -1,24 +1,21 @@
 :root {
-  /* Brandmanual */
-  --primary: #5b090a;
-  --secondary: #ffe7ea;
-
-  --bg: #ffe7ea;
+  /* BRANDMANUAL */
+  --bg: #fcedcf;
   --bg-card: #ffffff;
 
+  --primary: #5b090a;
   --text: #000000;
   --text-secondary: #5b090a;
 
-  /* Feedback */
+  /* FEEDBACK */
   --success: #34a853;
-  --warning: #5b090a;
   --error: #5b090a;
 
-  /* Effects */
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.25);
-  --radius: 1rem;
-  --transition: 250ms ease;
+  /* UI */
+  --radius: 16px;
+  --shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 6px 14px rgba(0, 0, 0, 0.16);
+  --transition: 200ms ease;
 }
 
 /* =====================
@@ -32,24 +29,43 @@
 /* =====================
    SEARCHBAR CONTAINER
    ===================== */
-.searchbar-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
+   .searchbar-container {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
 
-.searchbar-container #search-input {
+  .searchbar-container #search-input {
+    width: 100%;
+    max-width: 500px;
+    min-height: 48px;
+  
+    background: var(--bg-card);
+    color: var(--text);
+  
+    border: 1px solid var(--text);
+    border-radius: 999px;
+  
+    padding: 0.75rem 1.25rem;
+  
+    font-size: 1rem;
+  
+    box-shadow: none;
+  
+    transition: var(--transition);
+  }
+
+.searchbar-container label {
   width: 100%;
-  max-width: 400px;
-  background: var(--bg-card);
-  color: pink;
-  border: 1px solid var(--secondary);
-  border-radius: var(--radius);
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
+  max-width: 500px;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
 }
 
 .searchbar-container #search-input:focus {
@@ -70,22 +86,65 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
-    sans-serif;
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Arial, sans-serif;
+
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.5;
+
   background: var(--bg);
   color: var(--text);
+
   min-height: 100vh;
 }
 
 /* =====================
    LAYOUT (main container)
    ===================== */
-main {
-  max-width: min(1400px, 95vw);
-  margin: 0 auto;
-  padding: clamp(5rem, 10vw, 8rem) 1rem 2rem;
+   main {
+    width: min(1280px, 92%);
+    margin: 0 auto;
+  
+    padding: 8rem 0 3rem;
+  }
+/* =====================
+   LOGO HEADER
+   ===================== */
+
+.site-header {
+  background: var(--bg);
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  padding: 1rem 3rem;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+}
+
+.site-logo {
+  width: 90px;
+  height: auto;
+
+  justify-self: start;
+  display: block;
+}
+
+.site-header h1 {
+  grid-column: 2;
+
+  font-size: 1.75rem;
+  font-weight: 700;
+
+  margin: 0;
 }
 
 /* =====================
@@ -134,7 +193,7 @@ main {
 }
 
 #search-input::placeholder {
-  color: var(--text-light);
+  color: #555555;
   opacity: 1;
 }
 
@@ -147,27 +206,31 @@ main {
 /* =====================
    HEADER & FOOTER
    ===================== */
-header {
-  background: var(--bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(172, 198, 201, 0.2);
-  color: var(--text);
-  padding: 1rem 0;
-  text-align: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  transition: var(--transition);
-}
+
+   header {
+    background: var(--bg);
+    color: var(--text);
+  
+    padding: 1.5rem 1rem;
+  
+    text-align: center;
+  
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  
+    z-index: 1000;
+  
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
 
 header h1 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-size: clamp(2rem, 5vw, 2.5rem);
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
 }
-
+ 
 footer {
   background: var(--primary);
   color: var(--text);
@@ -185,225 +248,240 @@ footer {
 
 .game-card {
   width: 100%;
-  height: 320px;
+  max-width: 280px;
+
   background: var(--bg-card);
-  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   overflow: hidden;
+
+  transition: box-shadow var(--transition);
 }
 
 .game-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(91, 9, 10, 0.45);
   box-shadow: var(--shadow-lg);
-  border-color: var(--secondary);
 }
 
-.game-card:focus {
-  outline: 3px solid var(--secondary);
-  outline-offset: 2px;
-}
 
 .game-poster {
-  justify-content: center;
-  align-self: center;
-  max-width: 100%;
-  max-height: 180px;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 230px;
+
   object-fit: contain;
   display: block;
-  transition: var(--transition);
-  border-bottom: 1px solid #ccc;
-}
 
-.game-card:hover .game-poster {
-  transform: scale(1.05);
+  background: #ffffff;
+  padding: 0;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .game-info {
-  padding: 1.5rem;
-  position: relative;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.35rem;
+
+  flex: 1;
 }
 
 .game-info h3 {
-  font-size: clamp(1.125rem, 2vw, 1.375rem);
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--text);
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.5rem;
+
+  margin-bottom: 0.25rem;
 }
 
+.game-playtime,
+.game-players,
 .game-genre {
-  color: black;
-  font-size: 0.9rem;
-  margin-bottom: 0.75rem;
-}
-
-.game-rating {
-  color: var(--warning);
-  font-weight: 600;
-  display: flex;
-  gap: 0.25rem;
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  margin-bottom: 0;
+  color: var(--text);
+  font-size: 0.875rem;
 }
 
 /* =====================
-   CARD DIALOG
+   SPILDIALOG
    ===================== */
-dialog#game-dialog {
-  border: none;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
-  padding: 0;
-  max-width: min(95vw, 1000px);
-  max-height: 90vh;
-  background: var(--bg-card);
-  color: var(--text);
-  overflow: hidden;
-  position: relative;
-  margin: auto;
-}
 
-dialog#game-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
-}
-
-#close-dialog {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--text-light);
-  border: none;
-  border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: 1.25rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition);
-  z-index: 10;
-}
-
-#close-dialog:hover {
-  background: var(--error);
-  color: white;
-  transform: scale(1.1);
-}
-
-#dialog-content {
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: minmax(250px, 1fr) 2fr;
-  gap: 2rem;
-  align-items: start;
-  overflow-y: auto;
-  max-height: 90vh;
-}
-
-@media (max-width: 768px) {
+   dialog#game-dialog {
+    width: min(1000px, 90vw);
+  
+    border: none;
+    border-radius: 20px;
+  
+    background: var(--bg-card);
+    color: var(--text);
+  
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+  
+    padding: 0;
+    margin: auto;
+  
+    overflow: hidden;
+  }
+  
+  dialog#game-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.48);
+  }
+  
+  /* Indhold */
+  
   #dialog-content {
-    grid-template-columns: 1fr;
-    padding: 1.5rem;
-    gap: 1.5rem;
-    text-align: center;
+    min-height: 360px;
+  
+    padding: 2rem;
+  
+    display: grid;
+    grid-template-columns: 300px 1fr;
+  
+    gap: 2.5rem;
+    align-items: start;
   }
-}
-
-#dialog-content img.game-poster {
-  width: 100%;
-  height: auto;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-@media (max-width: 768px) {
+  
+  /* Billede */
+  
   #dialog-content img.game-poster {
-    max-width: 300px;
-    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+  
+    object-fit: contain;
+  
+    background: #ffffff;
+  
+    border-radius: 16px;
+  
+    box-shadow: var(--shadow);
+  
+    padding: 0;
   }
-}
+  
+  /* Tekstområdet */
+  
+  .dialog-details {
+    min-height: 300px;
+  
+    display: flex;
+    flex-direction: column;
+  
+    position: relative;
+  }
+  
+  /* Titel */
+  
+  #dialog-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+  
+    color: var(--text);
+  
+    line-height: 1.1;
+  
+    margin: 0 0 0.25rem;
+  }
+  
+  /* Almindelig information */
+  
+  #dialog-content p {
+    color: var(--text);
+  
+    font-size: 1rem;
+    line-height: 1.5;
+  
+    margin: 0.25rem 0;
+  }
+  
+  #dialog-content p strong {
+    font-weight: 600;
+  }
+  
+  /* Beskrivelse */
+  
+  .game-description {
+    margin-top: 2rem !important;
+  
+    padding: 0 !important;
+  
+    background: transparent !important;
+  
+    border: none !important;
+  
+    color: var(--text) !important;
+  
+    font-size: 1.05rem !important;
+    font-weight: 600;
+  
+    line-height: 1.6 !important;
+  
+    font-style: italic;
+  }
+  
+  /* Rating */
+  .game-rating {
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 700;
+  
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  
+    align-self: flex-end;
+  
+    margin-top: auto;
+    margin-bottom: 0.5rem;
+  }
+  
+  .rating-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  /* Luk */
+  
+  #close-dialog {
+    position: absolute;
+  
+    top: 1.25rem;
+    right: 1.5rem;
+  
+    width: auto;
+    height: auto;
+  
+    padding: 0;
+  
+    background: transparent;
+    border: none;
+  
+    color: #555555;
+  
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+  
+    cursor: pointer;
+  
+    z-index: 10;
+  }
+  
+  #close-dialog:hover {
+    background: transparent;
+    color: var(--primary);
+    transform: none;
+  }
 
-.dialog-details {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-#dialog-content h2 {
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.2;
-  margin: 0 0 1rem 0;
-}
-
-#dialog-content {
-  display: inline-block;
-  background: var(--secondary-light);
-  color: var(--primary);
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.5rem;
-  margin-left: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-#dialog-content p {
-  color: var(--text-light);
-  line-height: 1.6;
-  margin: 0 0 1rem 0;
-}
-
-#dialog-content p strong {
-  color: var(--text);
-  font-weight: 600;
-}
-
-#dialog-content {
-  color: var(--secondary);
-  font-weight: 500;
-  font-size: 1.1rem;
-}
-
-#dialog-content {
-  color: var(--warning);
-  font-weight: 600;
-  font-size: 1.125rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+  
 
 @media (max-width: 768px) {
   #dialog-content .game-rating {
     justify-content: center;
   }
-}
-
-.game-description {
-  color: var(--text) !important;
-  font-size: 1.1rem !important;
-  line-height: 1.7 !important;
-  margin-top: 1rem !important;
-  padding: 1rem;
-  background: var(--secondary-light);
-  border-radius: var(--radius);
-  border-left: 4px solid var(--secondary);
-  font-style: italic;
 }
 
 /* =====================
@@ -425,7 +503,143 @@ dialog#game-dialog::backdrop {
   }
 }
 
-/* Focus styles for keyboard navigation */
+.filterbar {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+
+  gap: 1rem;
+
+  margin-bottom: 2.5rem;
+  padding: 1rem 0;
+
+  background: transparent;
+}
+
+.filterbar label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+
+  border: 0;
+}
+
+.filterbar select {
+  min-height: 44px;
+  min-width: 150px;
+
+  background: var(--bg-card);
+  color: var(--text);
+
+  border: 1px solid var(--text);
+  border-radius: 999px;
+
+  padding: 0.65rem 1rem;
+
+  font-family: inherit;
+  font-size: 0.95rem;
+
+  text-align: center;
+  text-align-last: center;
+
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.clear-btn {
+  min-height: 44px;
+
+  background: var(--primary);
+  color: #ffffff;
+
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+
+  padding: 0.65rem 1.25rem;
+
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.clear-btn:hover {
+  background: #000000;
+}
+
+
+h1,
+h2,
+h3 {
+  font-family: "SF Pro Rounded", "SF Pro Display", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+#games-heading {
+  margin-bottom: 1rem;
+
+  font-size: 1.25rem;
+  font-weight: 700;
+
+  color: var(--text);
+}
+
+.game-details-btn {
+  width: 100%;
+
+  margin-top: auto;
+  padding: 0.65rem 1rem;
+
+  background: #ffffff;
+  color: var(--primary);
+
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.game-details-btn:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
 #search-input:focus-visible,
 .filterbar select:focus-visible,
 button:focus-visible {

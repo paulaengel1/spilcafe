@@ -12,10 +12,17 @@
   </head>
 
   <body>
-    <header>
+
+    <header class="site-header">
+      <img
+        src="img/logospilcafe.png"
+        alt="Spilcaféen"
+        class="site-logo"
+      >
+    
       <h1>Spiloversigt</h1>
     </header>
-
+    
     <main>
       <!-- Search Bar -->
       <div class="searchbar-container">
@@ -42,14 +49,14 @@
           <span class="btn-text">Ryd filtre</span>
         </button>
       </section>
-      <!-- Game List -->
+
       <section aria-labelledby="games-heading">
-        <h2 id="games-heading">Alle spil</h2>
+        <h2 id="games-heading">Spil</h2>
+        <p id="results-status" aria-live="polite"></p>
       
-        <div id="game-list">
-          <!-- Game cards will be rendered here by JavaScript -->
-        </div>
+        <div id="game-list"></div>
       </section>
+
     </main>
 
     <dialog id="game-dialog" aria-labelledby="dialog-title">

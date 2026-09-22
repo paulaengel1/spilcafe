@@ -77,10 +77,14 @@ function displayGame(game) {
 
     <div class="game-info">
       <h3>${game.title}</h3>
-      <p class="game-rating">⭐ ${game.rating}</p>
       <p class="game-playtime">Ca. ${game.playtime} min.</p>
       <p class="game-players">${game.players.min} - ${game.players.max} spillere</p>
       <p class="game-genre">${game.genre}</p>
+      <p class="game-rating">
+      <span class="rating-label">Bedømmelse:</span>
+      <span aria-hidden="true">⭐</span>
+      ${game.rating}
+</p>
 
       <button
         type="button"
@@ -160,27 +164,28 @@ function populateGenreDropdown() {
 
 // #6: Vis game i modal dialog - popup vindue med spil detaljer
 function showGameModal(game) {
-  // Find modal indhold container og byg HTML struktur dynamisk
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
- <img
-  src="${getLocalImage(game)}"
-  alt="Forside af brætspillet ${game.title}"
-  class="game-poster"
-  width="400"
-  height="400"
-/>
-    <div class="dialog-details">
-<h2 id="dialog-title">${game.title}</h2>
+    <img
+      src="${getLocalImage(game)}"
+      alt="Forside af brætspillet ${game.title}"
+      class="game-poster"
+      width="400"
+      height="400"
+    />
 
-<p class="game-genre">${
-  Array.isArray(game.genre) ? game.genre.join(", ") : game.genre || ""
-}</p>
-      <p class="game-rating">⭐ ${game.rating}</p>
+    <div class="dialog-details">
+      <h2 id="dialog-title">${game.title}</h2>
+
+      <p class="game-genre">
+        ${Array.isArray(game.genre) ? game.genre.join(", ") : game.genre || ""}
+      </p>
+
       <p class="game-description">${game.description}</p>
+
+      <p class="game-rating">⭐ ${game.rating}</p>
     </div>
   `;
 
-  // Åbn modalen - showModal() er en built-in browser funktion
   document.querySelector("#game-dialog").showModal();
 }
 
@@ -244,12 +249,27 @@ function filterGames() {
 // RENDER GAME LIST (called after filtering or loading data)
 function displayGames(games) {
   const gameList = document.querySelector("#game-list");
+  const resultsStatus = document.querySelector("#results-status");
+
   gameList.innerHTML = "";
+
+  // Hvis der ikke findes nogen resultater
   if (!games || games.length === 0) {
     gameList.innerHTML =
-      '<p class="no-results">Ingen spil matchede dine filtre </p>';
+      '<p class="no-results">Ingen spil matchede dine filtre</p>';
+
+    resultsStatus.textContent = "0 spil fundet";
     return;
   }
+
+  // Vis antal resultater
+  if (games.length === 1) {
+    resultsStatus.textContent = "1 spil fundet";
+  } else {
+    resultsStatus.textContent = `${games.length} spil fundet`;
+  }
+
+  // Vis spillene
   for (const game of games) {
     displayGame(game);
   }
