@@ -12,10 +12,7 @@
   /* Backgrounds - Dark Mode */
   --bg: #fbf1f1;
   --bg-card: #ffffff;
-
   --radius: 14px;
-  --shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
   --warning: #080808;
 }
 
@@ -57,32 +54,6 @@
 /* =====================
    DARK MODE CSS VARIABLES
    ===================== */
-:root {
-  /* Colors */
-  --primary: pink;
-  --secondary: white;
-  --primary-light: white;
-  --secondary-light: white;
-
-  /* Text - Dark Mode Colors */
-  --text: #121618;
-  --text-light: #dadce0;
-
-  /* Backgrounds - Dark Mode */
-  --bg: #f4d6ef;
-  --bg-card: white;
-
-  /* Semantic */
-  --success: #34a853;
-  --warning: #fbc02d;
-  --error: #ea4335;
-
-  /* Effects */
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
-  --radius: 1rem;
-  --transition: 250ms ease;
-}
 
 /* =====================
    GLOBAL STYLES
@@ -280,7 +251,7 @@ footer {
 }
 
 /* =====================
-   MOVIE DIALOG
+   CARD DIALOG
    ===================== */
 dialog#game-dialog {
   border: none;
@@ -375,7 +346,7 @@ dialog#game-dialog::backdrop {
   margin: 0 0 1rem 0;
 }
 
-#dialog-content .movie-year {
+#dialog-content {
   display: inline-block;
   background: var(--secondary-light);
   color: var(--primary);
@@ -397,13 +368,13 @@ dialog#game-dialog::backdrop {
   font-weight: 600;
 }
 
-#dialog-content .movie-genre {
+#dialog-content {
   color: var(--secondary);
   font-weight: 500;
   font-size: 1.1rem;
 }
 
-#dialog-content .movie-rating {
+#dialog-content {
   color: var(--warning);
   font-weight: 600;
   font-size: 1.125rem;
