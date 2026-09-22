@@ -68,10 +68,6 @@
   color: var(--text);
 }
 
-.searchbar-container #search-input:focus {
-  outline: 2px solid var(--secondary);
-  border-color: var(--secondary);
-}
 /* =====================
    DARK MODE CSS VARIABLES
    ===================== */
