@@ -450,8 +450,9 @@ dialog#game-dialog::backdrop {
 }
 
 /* Focus styles for keyboard navigation */
-.game-card:focus-visible,
-#close-dialog:focus-visible {
-  outline: 3px solid var(--secondary);
-  outline-offset: 2px;
+#search-input:focus-visible,
+.filterbar select:focus-visible,
+button:focus-visible {
+  outline: 3px solid #000000;
+  outline-offset: 3px;
 }
