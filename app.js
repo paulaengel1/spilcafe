@@ -164,7 +164,9 @@ function populateGenreDropdown() {
 
 // #6: Vis game i modal dialog - popup vindue med spil detaljer
 function showGameModal(game) {
-  document.querySelector("#dialog-content").innerHTML = /*html*/ `
+  const dialog = document.querySelector("#game-dialog");
+
+  document.querySelector("#dialog-content").innerHTML = `
     <img
       src="${getLocalImage(game)}"
       alt="Forside af brætspillet ${game.title}"
@@ -182,11 +184,16 @@ function showGameModal(game) {
 
       <p class="game-description">${game.description}</p>
 
-      <p class="game-rating">⭐ ${game.rating}</p>
+      <p class="game-rating">
+        <span class="rating-label">Bedømmelse:</span>
+        <span aria-hidden="true">⭐</span>
+        ${game.rating}
+      </p>
     </div>
   `;
 
-  document.querySelector("#game-dialog").showModal();
+  dialog.setAttribute("aria-labelledby", "dialog-title");
+  dialog.showModal();
 }
 
 // ===== FILTER FUNKTIONER =====
