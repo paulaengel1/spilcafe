@@ -1,19 +1,24 @@
 :root {
-  /* Colors */
-  --primary: #fbf1f1;
-  --secondary: #d5d2d2;
-  --primary-light: #fbf1f1;
-  --secondary-light: #ffffff;
+  /* Brandmanual */
+  --primary: #5b090a;
+  --secondary: #ffe7ea;
 
-  /* Text - Dark Mode Colors */
-  --text: #000000;
-  --text-light: #2f2f2f;
-
-  /* Backgrounds - Dark Mode */
-  --bg: #fbf1f1;
+  --bg: #ffe7ea;
   --bg-card: #ffffff;
-  --radius: 14px;
-  --warning: #080808;
+
+  --text: #000000;
+  --text-secondary: #5b090a;
+
+  /* Feedback */
+  --success: #34a853;
+  --warning: #5b090a;
+  --error: #5b090a;
+
+  /* Effects */
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.25);
+  --radius: 1rem;
+  --transition: 250ms ease;
 }
 
 /* =====================
@@ -69,7 +74,7 @@ body {
     sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background: rgb(255, 232, 235);
+  background: var(--bg);
   color: var(--text);
   min-height: 100vh;
 }
@@ -99,7 +104,7 @@ main {
   transform: translateX(-50%);
   padding: 1.5rem 2vw;
   box-sizing: border-box;
-  background: rgb(255, 232, 235);
+  background: var(--bg);
   border-radius: var(--radius);
 }
 
@@ -143,7 +148,7 @@ main {
    HEADER & FOOTER
    ===================== */
 header {
-  background: rgb(255, 232, 235);
+  background: var(--bg);
   backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(172, 198, 201, 0.2);
   color: var(--text);
