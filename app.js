@@ -178,10 +178,11 @@ function showGameModal(game) {
     <div class="dialog-details">
       <h2 id="dialog-title">${game.title}</h2>
 
-      <p class="game-genre">
-        ${Array.isArray(game.genre) ? game.genre.join(", ") : game.genre || ""}
-      </p>
-
+    <div class="dialog-meta">
+  <span>${game.players.min} - ${game.players.max} spillere</span>
+  <span>Ca. ${game.playtime} min.</span>
+  <span>${Array.isArray(game.genre) ? game.genre.join(", ") : game.genre || ""}</span>
+</div>
       <p class="game-description">${game.description}</p>
 
       <p class="game-rating">

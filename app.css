@@ -623,6 +623,14 @@ footer {
     padding: 1.5rem 0;
   }
   
+  .dialog-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
 
 /* =====================
    RESPONSIVE & ACCESSIBILITY
