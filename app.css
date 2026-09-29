@@ -632,6 +632,23 @@ footer {
     font-weight: 500;
   }
 
+  .searchbar-container {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background-color: #FCEDCF;
+    padding: 0.75rem 0;
+
+    /* Gør baggrunden lige så bred som hele skærmen */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding-left: max(1rem, calc((100vw - 1200px) / 2));
+    padding-right: max(1rem, calc((100vw - 1200px) / 2));
+
+    box-sizing: border-box;
+}
+
 /* =====================
    RESPONSIVE & ACCESSIBILITY
    ===================== */
@@ -818,5 +835,33 @@ footer {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+/* Mobil */
+@media (max-width: 599px) {
+
+  .searchbar-container {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    /* Hele sticky området går ud til skærmens kanter */
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+
+    padding: 12px 25px;
+    box-sizing: border-box;
+
+    background-color: #FCEDCF;
+  }
+
+  .searchbar-container input,
+  #search-input {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    margin: 0;
   }
 }
